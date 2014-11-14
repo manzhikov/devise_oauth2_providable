@@ -1,7 +1,7 @@
 class Devise::Oauth2Providable::AccessToken < ActiveRecord::Base
   expires_according_to :access_token_expires_in
 
-  before_validation :restrict_expires_at, :on => :create, :if => :refresh_token
+  before_validation :restrict_expires_at, on: :create, if: :refresh_token
   belongs_to :refresh_token
 
   # attr_accessible :refresh_token
@@ -18,7 +18,7 @@ class Devise::Oauth2Providable::AccessToken < ActiveRecord::Base
 
   private
 
-  def restrict_expires_at
-    self.expires_at = [self.expires_at, refresh_token.expires_at].compact.min
-  end
+    def restrict_expires_at
+      self.expires_at = [self.expires_at, refresh_token.expires_at].compact.min
+    end
 end
