@@ -17,7 +17,7 @@ module Devise
       end
 
       def index
-        referer = request.referer
+        referer = URI(request.referer)
         headers['Access-Control-Allow-Origin'] = "#{referer.scheme}://#{referer.host}"
         respond *authorize_endpoint(:allow_approval).call(request.env)
       end
