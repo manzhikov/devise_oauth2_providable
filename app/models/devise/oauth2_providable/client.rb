@@ -1,6 +1,7 @@
 class Devise::Oauth2Providable::Client
   include Mongoid::Document
   include Mongoid::Timestamps
+  include Devise::Oauth2Providable::ExpirableToken
 
   field :name,          type: String
   field :redirect_uri,  type: String

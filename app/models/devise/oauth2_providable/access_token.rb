@@ -1,6 +1,7 @@
 class Devise::Oauth2Providable::AccessToken
   include Mongoid::Document
   include Mongoid::Timestamps
+  include Devise::Oauth2Providable::ExpirableToken
 
 
   field :token,       type: String

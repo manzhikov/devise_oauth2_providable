@@ -1,5 +1,4 @@
 require 'active_support/concern'
-require 'active_record'
 
 module Devise
   module Oauth2Providable
@@ -54,5 +53,3 @@ module Devise
     end
   end
 end
-
-ActiveRecord::Base.send :include, Devise::Oauth2Providable::ExpirableToken
