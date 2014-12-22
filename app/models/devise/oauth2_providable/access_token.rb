@@ -1,8 +1,15 @@
-class Devise::Oauth2Providable::AccessToken < ActiveRecord::Base
+class Devise::Oauth2Providable::AccessToken
+  include Mongoid::Document
+  include Mongoid::Timestamps
+
+
+  field :token,       type: String
+  field :expires_at,  type: Time
+
   expires_according_to :access_token_expires_in
 
   before_validation :restrict_expires_at, on: :create, if: :refresh_token
-  belongs_to :refresh_token
+  belongs_to :user, :client, :refresh_token
 
   # attr_accessible :refresh_token
 
