@@ -10,7 +10,9 @@ class Devise::Oauth2Providable::AccessToken
   expires_according_to :access_token_expires_in
 
   before_validation :restrict_expires_at, on: :create, if: :refresh_token
-  belongs_to :user, :client, :refresh_token
+  belongs_to :user
+  belongs_to :client
+  belongs_to :refresh_token
 
   # attr_accessible :refresh_token
 

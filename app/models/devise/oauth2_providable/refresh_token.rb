@@ -6,7 +6,8 @@ class Devise::Oauth2Providable::RefreshToken
   field :token,       type: String
   field :expires_at,  type: Time
 
-  belongs_to :user, :client
+  belongs_to :user
+  belongs_to :client
 
   expires_according_to :refresh_token_expires_in
 
