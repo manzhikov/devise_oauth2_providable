@@ -22,7 +22,7 @@ module Devise
           validates :token, :presence => true, :uniqueness => true
 
           default_scope lambda {
-            where(self.arel_table[:expires_at].gteq(Time.now.utc))
+            where(:expires_at.gte => Time.now.utc)
           }
 
           include LocalInstanceMethods
